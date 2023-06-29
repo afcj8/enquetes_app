@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>App Enquetes</title>
+    </head>
+    <body>
+        <h1>Aplicação de Enquetes</h1>
+        <hr>
+        <h2>- {{ pergunta.pergunta_texto }} | Total de votos: {{ pergunta.total_votos }}</h2>
+        <ul>
+            {% for alternativa in lista_resultados %}
+                <li>{{ alternativa.alternativa_texto }} -- {{ alternativa.votos }} voto{{ alternativa.votos | pluralize }}
+                -- {{ alternativa.porcentagem | floatformat:0 }} %</li>
+                <br>
+            {% endfor %}
+        </ul>
+        <hr/>
+        <a href="{% url 'polls:index' %}">Voltar | </a>
+        <a href="{% url 'polls:detalhes' pergunta.id %}">Votar novamente!</a>
+    </body>
+</html>
